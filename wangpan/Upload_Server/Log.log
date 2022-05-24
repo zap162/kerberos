@@ -1,0 +1,13 @@
+2022-05-18 10:01:20  Server.Show.Starter.start(Starter.java:28)  [DEBUG]  "监控开启"
+2022-05-18 10:01:20  Server.Show.Starter.setRoot(Starter.java:105)  [DEBUG]  "进入do_Not_Delete.fxml"
+2022-05-18 10:01:20  Server.SocketServer.<init>(SocketServer.java:11)  [DEBUG]  "通信服务已启动"
+2022-05-18 10:02:52  Server.ServerThread.<init>(ServerThread.java:16)  [INFO ]  "通信线程已启动"
+2022-05-18 10:02:52  Server.UploadServer.<init>(UploadServer.java:28)  [DEBUG]  "点对点UploadServer已启动,客户端IP:192.168.43.156"
+2022-05-18 10:02:52  Server.SocketServer.ServerListener(SocketServer.java:25)  [INFO ]  "通信请求,客户端IP192.168.43.156"
+2022-05-18 10:02:52  Server.UploadServer.check_Authencator(UploadServer.java:32)  [DEBUG]  "解析客户端证书(9号报文)"
+2022-05-18 10:02:52  DES.DES_des.Decrypt_Text(DES_des.java:84)  [INFO ]  "开始解密"
+2022-05-18 10:02:52  DES.DES_des.Decrypt_Text(DES_des.java:85)  [DEBUG]  "传入密文内容：		yLV4prh0JZI4Kl3Um/u9cJ8sTW3WV6bMjWfDXpwgz+VnsLho+RepjHPUPet9A9ZO3LhRPSf8HzLi/2JU5dz66tGgD2NEi4HZTnYcS2AlLuFAKOkDft6zrmBThXQmHLVYqOMN/EWHA7kC4U3UnRGtpQ=="
+2022-05-18 10:02:52  DES.DES_des.Decrypt_Text(DES_des.java:86)  [DEBUG]  "解密密钥		密钥为	12345678"
+2022-05-18 10:02:52  DES.DES_des.Decrypt_Text(DES_des.java:91)  [INFO ]  "解密结束"
+2022-05-18 10:02:52  DES.DES_des.Decrypt_Text(DES_des.java:92)  [DEBUG]  "传出明文内容：		�!q�%��1��e�:�@�%|�r���x��=�Ȗ���D�E�^8��'���ط����jˡi�8�zӴpC�ԕ��<���b�q���+��K��ˈ���ҷ�}"
+2022-05-18 10:02:52  Server.ServerThread.run(ServerThread.java:89)  [ERROR]  "/192.168.43.156断开连接"
