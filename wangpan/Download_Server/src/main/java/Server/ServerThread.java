@@ -37,6 +37,7 @@ public class ServerThread extends Thread {
                 //心跳包
                 if (info == null) {//数据异常判断客户端是否关闭
                     while(true){
+                        //logger.debug("down心跳包这里出了问题");
                         socket.sendUrgentData(0xFF);//抛出异常
                     }
                 }

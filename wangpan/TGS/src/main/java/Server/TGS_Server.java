@@ -11,9 +11,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class TGS_Server {
-    private static final String URL = "jdbc:mysql://47.117.190.99:3306/gwz_db";//连接到的数据库
-    private static final String NAME = "GWZ_DB";//用户名
-    private static final String PASSWORD = "3hfYLRaCmyfKMWEH";//密码
+    //private static final String URL = "jdbc:mysql://47.117.190.99:3306/gwz_db";//连接到的数据库
+    private static final String URL = "jdbc:mysql://localhost:3306/disk?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT";
+    private static final String NAME = "root";//用户名
+    private static final String PASSWORD = "20010915h.s.";//密码
     public Connection conn = null;
 
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TGS_Server.class);

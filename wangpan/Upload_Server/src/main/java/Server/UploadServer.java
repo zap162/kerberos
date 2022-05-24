@@ -69,7 +69,7 @@ public class UploadServer {
         return true;
     }
     public void creat_NetDisk(){
-        File file=new File("/home/lemon/Desktop/NetDisk/"+this.Client_ID+File.separator);
+        File file=new File("C:\\Users\\hs\\Desktop\\GuaWazi-Network-Disk-master\\keep\\"+this.Client_ID+File.separator);
         if(file.exists()==false)
             file.mkdir();
     }
@@ -120,7 +120,7 @@ public class UploadServer {
         JSONObject filebuff=new JSONObject();//文件存储
         filebuff.put("Sig",Sig);
         filebuff.put("Em",Em);
-        File file=new File("/home/lemon/Desktop/NetDisk/"+this.Client_ID+ File.separator+filename);
+        File file=new File("C:\\Users\\hs\\Desktop\\GuaWazi-Network-Disk-master\\keep\\"+this.Client_ID+ File.separator+filename);
         file.createNewFile();//创建文件
         BufferedOutputStream out=new BufferedOutputStream(new FileOutputStream(file));
         out.write(filebuff.toJSONString().getBytes());

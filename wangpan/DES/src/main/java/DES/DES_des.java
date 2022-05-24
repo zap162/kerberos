@@ -2,6 +2,7 @@ package DES;
 
 import org.apache.log4j.Logger;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Random;
 
@@ -88,7 +89,11 @@ public class DES_des {
         DES Decrypt = new DES(Key);
 
         byte[] origion_Text = Decrypt.deal(c_Byte, 0);
+        logger.debug(origion_Text);
         logger.info("解密结束");
+        //String decrypted_Text = Base64.getEncoder().encodeToString(origion_Text);
+        //logger.debug("传出明文内容：\\t\\t" + decrypted_Text);
+        //return decrypted_Text;
         logger.debug("传出明文内容：\t\t" + new String(origion_Text));
         return new String(origion_Text);
     }

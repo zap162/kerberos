@@ -30,7 +30,7 @@ public class Starter extends Application {
         Login_Scene = new Scene(loadFXML("Login"));
         current_Scene = Login_Scene;
         current_Stage = stage;
-        Starter.setRoot("Login", "登录 | GHZ", 420, 512, 420, 512, 420, 512);
+        Starter.setRoot("Login", "登录 | GHL云盘", 420, 512, 420, 512, 420, 512);
         current_Stage.setScene(current_Scene);
         current_Stage.show();
         Starter.setStageIcon(current_Stage);
@@ -59,7 +59,7 @@ public class Starter extends Application {
                 EC_Stage.setScene(EC_Scene);
                 EC_Stage.setMinWidth(300);
                 EC_Stage.setMinHeight(400);
-                EC_Stage.setTitle("加解密展示 | GHZ");
+                EC_Stage.setTitle("加解密展示 | Client");
                 EC_Stage.setX(0);
                 EC_Stage.setY(0);
                 EC_Stage.show();

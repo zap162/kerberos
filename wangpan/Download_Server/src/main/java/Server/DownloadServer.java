@@ -36,6 +36,7 @@ public class DownloadServer {
         /*DES Kv解密票据*///
         String t1 = Ticket_v;
         Ticket_v = DES.Decrypt_Text(Ticket_v, this.Kv);
+        //logger.debug("38没问题");
         DES_RSA_Controller.EC_Show_Appendent(true, false, this.Kv, "", "", Ticket_v, t1);
         JSONObject ticket_v = JSON.parseObject(Ticket_v);
         this.Kc_v = ticket_v.getString("Kc_v");
@@ -44,6 +45,7 @@ public class DownloadServer {
         /*DES Kc_v解密票据*///
         //解密过程................
         String t2 = Authenticator_c;
+        logger.debug("开始Authenticator_c解密");
         Authenticator_c = DES.Decrypt_Text(Authenticator_c, this.Kc_v);
         DES_RSA_Controller.EC_Show_Appendent(true, false, this.Kc_v, "", "", Authenticator_c, t2);
         JSONObject authenticator_c = JSON.parseObject(Authenticator_c);
@@ -72,7 +74,7 @@ public class DownloadServer {
     }
 
     public void creat_NetDisk() {
-        File file = new File("/home/lemon/Desktop/NetDisk/" + this.Client_ID + File.separator);
+        File file = new File("C:\\Users\\hs\\Desktop\\GuaWazi-Network-Disk-master\\keep\\" + this.Client_ID + File.separator);
         if (file.exists() == false)
             file.mkdir();
     }
@@ -120,11 +122,12 @@ public class DownloadServer {
         if (t3_show.length() > 500) {
             t3_show = t3_show.substring(0, 499);
         }
+        logger.debug("125这里没有问题");
         DES_RSA_Controller.EC_Show_Appendent(true, false, this.Kc_v, "", "", data_show, t3_show);
         JSONObject data = JSON.parseObject(Data);
-
+        logger.debug("128这里没有问题");
         String filename = data.getString("filename");
-        File file = new File("/home/lemon/Desktop/NetDisk/" + this.Client_ID + File.separator + filename);
+        File file = new File("C:\\Users\\hs\\Desktop\\GuaWazi-Network-Disk-master\\keep\\" + this.Client_ID + File.separator + filename);
         String str = null;
         try {
             BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
@@ -134,6 +137,7 @@ public class DownloadServer {
             e.printStackTrace();
             logger.error("系统异常");
         }
+        logger.debug("140这里没有问题");
         //String str=new String(bytes);//转换为string
         JSONObject filebuff = JSON.parseObject(str);
         JSONObject newData = new JSONObject();
@@ -170,7 +174,7 @@ public class DownloadServer {
         newmsg.put("id", 13);
         newmsg.put("IDc", this.Client_ID);
         JSONObject newData = new JSONObject();
-        File file = new File("/home/lemon/Desktop/NetDisk/" + this.Client_ID + File.separator);
+        File file = new File("C:\\Users\\hs\\Desktop\\GuaWazi-Network-Disk-master\\keep\\" + this.Client_ID + File.separator);
         if (file.exists() == false) {
             logger.error("系统错误");
             return null;
@@ -222,12 +226,12 @@ public class DownloadServer {
         //获取文件列表
         List<String> filename = data.getJSONArray("filename").toJavaList(String.class);
         for (String f : filename) {
-            File file = new File("/home/lemon/Desktop/NetDisk/" + this.Client_ID + File.separator + f);
+            File file = new File("C:\\Users\\hs\\Desktop\\GuaWazi-Network-Disk-master\\keep\\" + this.Client_ID + File.separator + f);
             if (file.delete() == false) {
                 logger.error("系统错误");
                 return false;
             }
-            logger.error("/home/lemon/Desktop/NetDisk/" + this.Client_ID + File.separator + f + "删除成功");
+            logger.error("C:\\Users\\hs\\Desktop\\GuaWazi-Network-Disk-master\\keep\\" + this.Client_ID + File.separator + f + "删除成功");
         }
         return true;
     }

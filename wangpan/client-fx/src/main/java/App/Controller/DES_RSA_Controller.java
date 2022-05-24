@@ -49,24 +49,6 @@ public class DES_RSA_Controller implements Initializable {
         EC_Show_Background_Thread.start();
     }
 
-    public String switch_text(String text){
-        int n=0;
-        StringBuffer texts = new StringBuffer(text);
-        for (int i=0;i<texts.length();i++){
-            char ch=texts.charAt(i);
-            n++;
-            if (ch ==','){
-                texts.insert(i,"\r\n");
-            }
-            else if(n==20){
-                texts.insert(i,"\r\n");
-            }
-
-        }
-        String result=texts.toString();
-        return result;
-    }
-
     public void Show_Monitor_Thread_Run() throws InterruptedException {//变化监视进程
         int left = 0;
         Boolean is_DES = false;
@@ -92,11 +74,11 @@ public class DES_RSA_Controller implements Initializable {
                     } else {
                         is_Encrypt = false;
                     }
-                    DES_Key = switch_text(show[2]);
-                    RSA_PKey = switch_text(show[3]);
-                    RSA_SKey = switch_text(show[4]);
-                    original_Text = switch_text(show[5]);
-                    encrypted_Text = switch_text(show[6]);
+                    DES_Key = show[2];
+                    RSA_PKey = show[3];
+                    RSA_SKey = show[4];
+                    original_Text = show[5];
+                    encrypted_Text = show[6];
                     show_One_Content(is_DES, is_Encrypt, DES_Key, RSA_PKey, RSA_SKey, original_Text, encrypted_Text);
                     left = get_Left;
                 }
@@ -112,19 +94,15 @@ public class DES_RSA_Controller implements Initializable {
         String type_Show = "";
         if (is_Encrypt) {
             if (is_DES) {
-                //type_Show = "DES-加密";
-                type_Show = "加密";
+                type_Show = "DES-加密";
             } else {
-                //type_Show = "RSA-加密";
-                type_Show = "加密";
+                type_Show = "RSA-加密";
             }
         } else {
             if (is_DES) {
-                //type_Show = "DES-解密";
-                type_Show = "解密";
+                type_Show = "DES-解密";
             } else {
-                //type_Show = "RSA-解密";
-                type_Show = "解密";
+                type_Show = "RSA-解密";
             }
         }
         //默认字体设置
@@ -132,7 +110,7 @@ public class DES_RSA_Controller implements Initializable {
         //加密类型段
         Label type_Show_Label = new Label();
         type_Show_Label.setFont(default_Show_Font);//字体
-        type_Show_Label.setText("类型：\t" + type_Show);//文字
+        type_Show_Label.setText("加密类型：\t" + type_Show);//文字
         type_Show_Label.setPrefWidth(short_Width);//宽度
         type_Show_Label.setPrefHeight(fixed_Height);//高度
         type_Show_Label.setLayoutX(fixed_X);//x位置
@@ -144,8 +122,7 @@ public class DES_RSA_Controller implements Initializable {
             //密钥段
             Label key_Show_Label = new Label();
             key_Show_Label.setFont(default_Show_Font);//字体
-            //key_Show_Label.setText("密钥：\t" + DES_Key);//文字
-            key_Show_Label.setText("来源：\t" + "");
+            key_Show_Label.setText("密钥：\t" + DES_Key);//文字
             key_Show_Label.setPrefWidth(long_Width);//宽度
             key_Show_Label.setPrefHeight(fixed_Height);//高度
             key_Show_Label.setLayoutX(fixed_X);//x位置
@@ -156,8 +133,7 @@ public class DES_RSA_Controller implements Initializable {
             //密钥段
             Label pkey_Show_Label = new Label();
             pkey_Show_Label.setFont(default_Show_Font);//字体
-            //pkey_Show_Label.setText("公钥：\t" + RSA_Pkey);//文字
-            pkey_Show_Label.setText("目的：\t" + "AS");
+            pkey_Show_Label.setText("公钥：\t" + RSA_Pkey);//文字
             pkey_Show_Label.setPrefWidth(long_Width);//宽度
             pkey_Show_Label.setPrefHeight(fixed_Height);//高度
             pkey_Show_Label.setLayoutX(fixed_X);//x位置
@@ -167,7 +143,7 @@ public class DES_RSA_Controller implements Initializable {
 
             Label skey_Show_Label = new Label();
             skey_Show_Label.setFont(default_Show_Font);//字体
-            //skey_Show_Label.setText("私钥：\t" + RSA_Skey);//文字
+            skey_Show_Label.setText("私钥：\t" + RSA_Skey);//文字
             skey_Show_Label.setPrefWidth(long_Width);//宽度
             skey_Show_Label.setPrefHeight(fixed_Height);//高度
             skey_Show_Label.setLayoutX(fixed_X);//x位置

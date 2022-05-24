@@ -14,7 +14,6 @@ public class EC_Show_Queue {
     private int left;
 
     public EC_Show_Queue() {
-
         is_DES = new LinkedList<>();
         is_Encrypt = new LinkedList<Boolean>();
         DES_Key = new LinkedList<String>();

@@ -88,7 +88,7 @@ public class DES_RSA_Controller implements Initializable {
     }
 
 
-    public void  show_One_Content(Boolean is_DES, Boolean is_Encrypt, String DES_Key, String RSA_Pkey, String RSA_Skey, String original_Text, String encrypted_Text) {
+    public void show_One_Content(Boolean is_DES, Boolean is_Encrypt, String DES_Key, String RSA_Pkey, String RSA_Skey, String original_Text, String encrypted_Text) {
         Pane Show_One_Pane = new Pane();
         Double current_Show_Pane_Height = 0d;
         String type_Show = "";
@@ -118,7 +118,31 @@ public class DES_RSA_Controller implements Initializable {
         current_Show_Pane_Height += fixed_Height;//y位置增加
         Show_One_Pane.getChildren().add(type_Show_Label);
 
-        if (is_DES) {
+
+
+
+
+
+        //来源我的修改
+        Label origin_Text_Show_Label = new Label();
+        origin_Text_Show_Label.setFont(default_Show_Font);//字体
+        origin_Text_Show_Label.setText("来自：client\t");//文字
+        origin_Text_Show_Label.setPrefWidth(long_Width);//宽度
+        origin_Text_Show_Label.setPrefHeight(fixed_Height);//高度
+        origin_Text_Show_Label.setLayoutX(fixed_X);//x位置
+        origin_Text_Show_Label.setLayoutY(current_Show_Pane_Height);//y位置
+        current_Show_Pane_Height += fixed_Height;//y位置增加
+        Show_One_Pane.getChildren().add(origin_Text_Show_Label);
+
+
+
+
+
+
+
+
+
+        /*if (is_DES) {
             //密钥段
             Label key_Show_Label = new Label();
             key_Show_Label.setFont(default_Show_Font);//字体
@@ -150,7 +174,7 @@ public class DES_RSA_Controller implements Initializable {
             skey_Show_Label.setLayoutY(current_Show_Pane_Height);//y位置
             current_Show_Pane_Height += fixed_Height;//y位置增加
             Show_One_Pane.getChildren().add(skey_Show_Label);
-        }
+        }*/
         //明文段
         Label origion_Text_Show_Label = new Label();
         origion_Text_Show_Label.setFont(default_Show_Font);//字体

@@ -190,7 +190,7 @@ public class User_Controller implements Initializable {
                     //异步更新UI
                     Platform.runLater(() -> {
                         try {
-                            Starter.setRoot("Login", "登录 | GHZ云盘", 420, 512, 420, 512, 420, 512);
+                            Starter.setRoot("Login", "登录 | GHL云盘", 420, 512, 420, 512, 420, 512);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -261,7 +261,7 @@ public class User_Controller implements Initializable {
             logger.debug("尝试连接服务器");
             os = socket.getOutputStream();//字节流(二进制)
             pw = new PrintWriter(os);//字符编码
-
+            logger.debug("264没问题");
             JSONObject message_9_Au_Json = new JSONObject();
             message_9_Au_Json.put("id", 9);
             message_9_Au_Json.put("Ticket_v", ClientApp.ticket_DOWN1);
@@ -269,13 +269,13 @@ public class User_Controller implements Initializable {
             JSONObject au_Origin = new JSONObject();
             au_Origin.put("IDc", ClientApp.User_ID);
             au_Origin.put("ADc", ClientApp.ADc);
-            logger.debug(ClientApp.ADc);
             au_Origin.put("TS5", TS5);
             String au_Origin_String = au_Origin.toJSONString();
+            logger.debug("加密前"+ au_Origin_String);
             String au_Encrypt_String = DES_des.Encrypt_Text(au_Origin_String, ClientApp.K_C_DOWN1);
             DES_RSA_Controller.EC_Show_Appendent(true, true, ClientApp.K_C_DOWN1, "", "", au_Origin_String, au_Encrypt_String);
             message_9_Au_Json.put("Authenticator_c", au_Encrypt_String);
-
+            logger.debug("278 success");
             pw.write(message_9_Au_Json + "\n");
             pw.flush();
 
@@ -283,12 +283,15 @@ public class User_Controller implements Initializable {
             is = socket.getInputStream();
             br = new BufferedReader(new InputStreamReader(is));
             String server_Message_10 = br.readLine();
+            logger.debug("286 success");
             //心跳包
             if (server_Message_10 == null) {//数据异常判断客户端是否关闭
                 while(true){
+                    logger.debug("客户端心跳包出问题");
                     socket.sendUrgentData(0xFF);//抛出异常
                 }
             }
+            logger.debug("293 success");
             JSONObject msg_10_Json = JSON.parseObject(server_Message_10);
             if (msg_10_Json.getInteger("id") == 10) {
                 Calendar calendar = new GregorianCalendar();
@@ -1441,7 +1444,7 @@ public class User_Controller implements Initializable {
                     }
                 } else {
                     show_Error_Alerter("删除状态", "删除失败", "身份验证失败，请重新登录！");
-                    Starter.setRoot("Login", "登录 | GHZ云盘", 420, 512, 420, 512, 420, 512);
+                    Starter.setRoot("Login", "登录 | GHL云盘", 420, 512, 420, 512, 420, 512);
                 }
             } catch (Exception e) {
                 logger.error("服务端已经断开连接\n");
@@ -1481,7 +1484,7 @@ public class User_Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //加载图片
-        URL image_Url = Starter.class.getResource("img/logo.png");
+        URL image_Url = Starter.class.getResource("img/logo1.png");
         ImageView logo_Image = new ImageView(image_Url.toExternalForm());
         logo_Image.setFitHeight(29);
         logo_Image.setFitWidth(29);

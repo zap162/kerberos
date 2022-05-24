@@ -271,7 +271,7 @@ public class Login_Controller implements Initializable {
 
                                 String osName = System.getProperty("os.name");
                                 if (osName.toLowerCase().indexOf("windows") > -1) {//windows
-                                    ClientApp.ADc="192.168.43.114";//InetAddress.getLocalHost().getHostAddress()
+                                    ClientApp.ADc=InetAddress.getLocalHost().getHostAddress();
                                 }
                                 else{//linux
                                     String ip = "";
@@ -309,7 +309,7 @@ public class Login_Controller implements Initializable {
 
 
 
-                                //ClientApp.ADc = socket.getInetAddress().getHostAddress();
+                                ClientApp.ADc = socket.getInetAddress().getHostAddress();
                                 int status = get_TicketV(user_ID, ClientApp.up_Load_Server_ID);
                                 if (status == 1) {
                                     status = get_TicketV(user_ID, ClientApp.down_Load_Server_ID);
@@ -372,7 +372,7 @@ public class Login_Controller implements Initializable {
         try {
             socket = new Socket(ClientApp.TGS_IP, ClientApp.TGS_Port);
             logger.debug("尝试连接服务器");
-            logger.debug(ClientApp.ADc);
+
             os = socket.getOutputStream();//字节流(二进制)
             pw = new PrintWriter(os);//字符编码
             String au_Key = String.valueOf((user_ID + ClientApp.TGS_ID).hashCode());
@@ -380,7 +380,6 @@ public class Login_Controller implements Initializable {
             JSONObject au_Origin = new JSONObject();
             au_Origin.put("IDc", user_ID);
             au_Origin.put("ADc", ClientApp.ADc);
-
             au_Origin.put("TS3", new Date());
             String au_Origin_String = au_Origin.toJSONString();
             String au_Encrypt_String = DES_des.Encrypt_Text(au_Origin_String, au_Key);
@@ -408,9 +407,10 @@ public class Login_Controller implements Initializable {
                     socket.sendUrgentData(0xFF);//抛出异常
                 }
             }
-            logger.debug("接收到的服务器消息" + server_Message_8);
+            logger.debug("接收到的服务器消息8" + server_Message_8);
 
             JSONObject msg_8 = JSON.parseObject(server_Message_8);//转换为Json对象
+            logger.debug("412没有问题");
             if (msg_8.getInteger("id") == 8) {
                 if (id_V.equals(ClientApp.up_Load_Server_ID)) {
                     String msg_8_en_String = msg_8.getString("TGS_C");
@@ -419,6 +419,7 @@ public class Login_Controller implements Initializable {
                     JSONObject msg_8_Json = JSON.parseObject(msg_8_de_String);
                     ClientApp.ticket_UP1 = msg_8_Json.getString("Ticket_V");
                     ClientApp.K_C_UP1 = msg_8_Json.getString("Kc_v");
+                    logger.debug("421是八号报文");
                 } else {
                     String msg_8_en_String = msg_8.getString("TGS_C");
                     String msg_8_de_String = DES_des.Decrypt_Text(msg_8_en_String, ClientApp.K_C_TGS);
@@ -426,6 +427,7 @@ public class Login_Controller implements Initializable {
                     JSONObject msg_8_Json = JSON.parseObject(msg_8_de_String);
                     ClientApp.ticket_DOWN1 = msg_8_Json.getString("Ticket_V");
                     ClientApp.K_C_DOWN1 = msg_8_Json.getString("Kc_v");
+                    logger.debug("429成功进行");
                 }
                 return 1;//成功
             } else {
@@ -739,7 +741,7 @@ public class Login_Controller implements Initializable {
                         ClientApp.User_ID = ID;
                         logger.debug("与UP1的通信密钥：" + ClientApp.K_C_UP1);
                         logger.debug("与DOWN1的通信密钥：" + ClientApp.K_C_DOWN1);
-                        Starter.setRoot("User", "GHZ云盘", 1280, 800, 980, 600);//先进入再弹窗阻塞
+                        Starter.setRoot("User", "GHL云盘", 1280, 800, 980, 600);//先进入再弹窗阻塞
                         show_Info_Alerter("登录状态", "登录成功", "正在进入云盘");
                         break;
                     case 2:
@@ -914,8 +916,8 @@ public class Login_Controller implements Initializable {
         //加载图片
         URL image_Url = Starter.class.getResource("img/logo.png");
         ImageView logo_Image = new ImageView(image_Url.toExternalForm());
-        logo_Image.setFitHeight(115);
-        logo_Image.setFitWidth(115);
+        logo_Image.setFitHeight(120);
+        logo_Image.setFitWidth(120);
         logo_Label.setGraphic(logo_Image);
 
         //设置边框的样式参数

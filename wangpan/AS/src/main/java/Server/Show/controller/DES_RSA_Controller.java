@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 
 public class DES_RSA_Controller implements Initializable {
@@ -95,14 +96,18 @@ public class DES_RSA_Controller implements Initializable {
         if (is_Encrypt) {
             if (is_DES) {
                 type_Show = "DES-加密";
+                type_Show = "加密";
             } else {
                 type_Show = "RSA-加密";
+                type_Show = "加密";
             }
         } else {
             if (is_DES) {
                 type_Show = "DES-解密";
+                type_Show = "解密";
             } else {
                 type_Show = "RSA-解密";
+                type_Show = "解密";
             }
         }
         //默认字体设置
@@ -110,7 +115,7 @@ public class DES_RSA_Controller implements Initializable {
         //加密类型段
         Label type_Show_Label = new Label();
         type_Show_Label.setFont(default_Show_Font);//字体
-        type_Show_Label.setText("加密类型：\t" + type_Show);//文字
+        type_Show_Label.setText("加解密类型：\t" + type_Show);//文字改
         type_Show_Label.setPrefWidth(short_Width);//宽度
         type_Show_Label.setPrefHeight(fixed_Height);//高度
         type_Show_Label.setLayoutX(fixed_X);//x位置
@@ -122,7 +127,7 @@ public class DES_RSA_Controller implements Initializable {
             //密钥段
             Label key_Show_Label = new Label();
             key_Show_Label.setFont(default_Show_Font);//字体
-            key_Show_Label.setText("密钥：\t" + DES_Key);//文字
+            //key_Show_Label.setText("密钥：\t" + DES_Key);//文字
             key_Show_Label.setPrefWidth(long_Width);//宽度
             key_Show_Label.setPrefHeight(fixed_Height);//高度
             key_Show_Label.setLayoutX(fixed_X);//x位置
@@ -133,7 +138,7 @@ public class DES_RSA_Controller implements Initializable {
             //密钥段
             Label pkey_Show_Label = new Label();
             pkey_Show_Label.setFont(default_Show_Font);//字体
-            pkey_Show_Label.setText("公钥：\t" + RSA_Pkey);//文字
+            //pkey_Show_Label.setText("公钥：\t" + RSA_Pkey);//文字
             pkey_Show_Label.setPrefWidth(long_Width);//宽度
             pkey_Show_Label.setPrefHeight(fixed_Height);//高度
             pkey_Show_Label.setLayoutX(fixed_X);//x位置
@@ -143,7 +148,7 @@ public class DES_RSA_Controller implements Initializable {
 
             Label skey_Show_Label = new Label();
             skey_Show_Label.setFont(default_Show_Font);//字体
-            skey_Show_Label.setText("私钥：\t" + RSA_Skey);//文字
+            //skey_Show_Label.setText("私钥：\t" + RSA_Skey);//文字
             skey_Show_Label.setPrefWidth(long_Width);//宽度
             skey_Show_Label.setPrefHeight(fixed_Height);//高度
             skey_Show_Label.setLayoutX(fixed_X);//x位置
@@ -151,6 +156,24 @@ public class DES_RSA_Controller implements Initializable {
             current_Show_Pane_Height += fixed_Height;//y位置增加
             Show_One_Pane.getChildren().add(skey_Show_Label);
         }
+
+
+
+        //来源我的修改
+        Label origin_Text_Show_Label = new Label();
+        origin_Text_Show_Label.setFont(default_Show_Font);//字体
+        origin_Text_Show_Label.setText("来自：client\t");//文字
+        origin_Text_Show_Label.setPrefWidth(long_Width);//宽度
+        origin_Text_Show_Label.setPrefHeight(fixed_Height);//高度
+        origin_Text_Show_Label.setLayoutX(fixed_X);//x位置
+        origin_Text_Show_Label.setLayoutY(current_Show_Pane_Height);//y位置
+        current_Show_Pane_Height += fixed_Height;//y位置增加
+        Show_One_Pane.getChildren().add(origin_Text_Show_Label);
+
+
+
+
+
         //明文段
         Label origion_Text_Show_Label = new Label();
         origion_Text_Show_Label.setFont(default_Show_Font);//字体

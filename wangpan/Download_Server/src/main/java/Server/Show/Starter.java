@@ -75,7 +75,7 @@ public class Starter extends Application {
                     EC_Stage.setScene(EC_Scene);
                     EC_Stage.setMinWidth(300);
                     EC_Stage.setMinHeight(400);
-                    EC_Stage.setTitle("加解密展示 | Download Server端 | GHZ云盘");
+                    EC_Stage.setTitle("加解密展示 | Download Server端 | GHL云盘");
                     EC_Stage.setX(0);
                     EC_Stage.setY(0);
                     EC_Stage.show();

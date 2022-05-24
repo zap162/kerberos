@@ -15,11 +15,23 @@ import java.util.GregorianCalendar;
 
 import RSA.RSA;
 
-public class AS_Server {
-    private static final String URL = "jdbc:mysql://47.117.190.99:3306/gwz_db?autoReconnect=true";//连接到的数据库
-    private static final String NAME = "GWZ_DB";//用户名
-    private static final String PASSWORD = "3hfYLRaCmyfKMWEH";//密码
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+public class AS_Server {
+    //private static final String URL = "jdbc:mysql://47.117.190.99:3306/gwz_db?autoReconnect=true";//连接到的数据库
+    //private static final String URL = "jdbc:mysql://localhost:3306/disk?autoReconnect=true";//连接到的数据库
+    /*private static final String URL = "jdbc:mysql://192.168.43.114:3306/db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT";
+    //private static final String NAME = "GWZ_DB";//用户名
+    private static final String NAME = "root";//用户名
+    //private static final String PASSWORD = "3hfYLRaCmyfKMWEH";//密码
+    private static final String PASSWORD = "123456";//密码*/
+    private static final String URL = "jdbc:mysql://localhost:3306/disk?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT";
+    //private static final String NAME = "GWZ_DB";//用户名
+    private static final String NAME = "root";//用户名
+    //private static final String PASSWORD = "3hfYLRaCmyfKMWEH";//密码
+    private static final String PASSWORD = "20010915h.s.";//密码
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(AS_Server.class);
     static final String Server_ID = "AS1";//服务器的ID(固定)
     static final String Kv = "key";//保存上传 Server 与 TGS 的密钥

@@ -40,6 +40,7 @@ public class ServerThread extends Thread {
                 //心跳包
                 if (info == null) {//数据异常判断客户端是否关闭
                     while(true){
+                        logger.debug("心跳包这里出问题");
                         socket.sendUrgentData(0xFF);//抛出异常
                     }
                 }
@@ -53,6 +54,8 @@ public class ServerThread extends Thread {
                 JSONObject message = JSON.parseObject(info);
                 System.out.println(info);
                 int id = message.getInteger("id");
+                System.out.print (id);
+                logger.debug(id);
                 switch (id) {
                     case 1://证书
                     {
